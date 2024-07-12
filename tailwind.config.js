@@ -7,7 +7,7 @@ export default {
         gray: "#5A5959",
         yellow: "#FFEAAE",
         "dark-yellow": "#FCCA3F",
-        orange: "F6820C",
+        orange: "#F6820C",
       },
     },
   },
