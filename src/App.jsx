@@ -7,20 +7,12 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
 import { ContactCard } from "./components/ContactCard";
 import AddAndUpdateContact from "./components/AddAndUpdateContact";
+import useDisclouse from "./hooks/useDisclouse";
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
 
-  const [isOpen, setOpen] = useState(false);
-
-  const onOpen = () => {
-    setOpen(true);
-  };
-
-  const onClose = () => {
-    setOpen(false);
-  };
-
+  const { isOpen, onClose, onOpen } = useDisclouse();
   useEffect(() => {
     const getContacts = async () => {
       try {
