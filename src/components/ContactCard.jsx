@@ -6,6 +6,7 @@ import { db } from "../config/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 import AddAndUpdateContact from "./AddAndUpdateContact";
 import useDisclouse from "../hooks/useDisclouse";
+import { toast } from "react-toastify";
 
 export const ContactCard = ({ contact }) => {
   const { isOpen, onClose, onOpen } = useDisclouse();
@@ -13,6 +14,7 @@ export const ContactCard = ({ contact }) => {
   const deleteContact = async (id) => {
     try {
       await deleteDoc(doc(db, "contacts", id));
+      toast.success("Contact Deleted Successfully");
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +40,12 @@ export const ContactCard = ({ contact }) => {
           />
         </div>
       </div>
-      <AddAndUpdateContact isOpen={isOpen} onClose={onClose} />
+      <AddAndUpdateContact
+        contact={contact}
+        isUpdate
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </>
   );
 };
